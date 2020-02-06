@@ -1,0 +1,16 @@
+//Use Arduino to control Motor
+#include <Servo.h> // use servo libraty to control ESC
+Servo ESC;  // creat a servo class with name as ESC
+int potValue; //Value from the analog pin.
+void setup() {
+  // put your setup code here, to run once:
+  ESC.attach (9, 1000, 2000);//specify the ESC signal pin
+  
+}
+
+void loop() {
+  // put your main code here, to run repeatedly:
+  potValue = analogRead (A0); // read input from analog pin ao and store in potValue
+  potValue = map (potValue, 0, 1023, 0, 180); // map potValue to minimum and maximum 
+  ESC. write (potValue); // use potValue as the signal to ESC
+}
